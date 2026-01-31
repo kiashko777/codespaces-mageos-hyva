@@ -233,8 +233,6 @@ fi;
   # unzip -o ${CODESPACES_REPO_ROOT}/staging_media.zip -d ${CODESPACES_REPO_ROOT}/pub/ && rm ./staging_media.zip
 fi
 
-show_ready_message
-
 touch "${CODESPACES_REPO_ROOT}/.devcontainer/db-installed.flag"
 
 if [ "${HYVA_LICENCE_KEY}" ]; then
@@ -308,14 +306,4 @@ if [ "${INSTALL_SAMPLE_DATA}" = "YES" ]; then
     fi
 fi
 
-
-# ======================================================================================
-# Environment Ready Message
-# ======================================================================================
-show_ready_message() {
-  echo "============ Environment Ready =========="
-  echo "All services started successfully!"
-  echo "You can check service status with: .devcontainer/scripts/status.sh"
-  echo "And Docker containers with: docker ps"
-  echo "Have an awesome time! 💙 Develo.co.uk"
-}
+show_ready_message
