@@ -19,6 +19,7 @@ A complete GitHub Codespaces development setup for Mage-OS (Magento Open Source)
 
 - **Flexible Platform Installation**: Choose between Mage-OS or Magento via `USE_MAGEOS` flag
 - **Sample Data Installation**: Optional sample data installation via `INSTALL_SAMPLE_DATA` flag
+- **A.I Development Bot Integration - Jira -> A.I Development workflow
 - Pre-configured services (Nginx, MariaDB, Redis, OpenSearch)
 - Hyvä theme build automation
 - Docker-in-Docker support for additional containers (Mailpit, OpenSearch, phpMyAdmin)
@@ -35,10 +36,14 @@ A complete GitHub Codespaces development setup for Mage-OS (Magento Open Source)
   - `HYVA_LICENCE_KEY`: Hyvä license key (token for authentication)
   - `HYVA_PROJECT_NAME`: Hyvä project name for Packagist repository access
 
+- A.I Bot requirements
+  - `GEMINI_API_KEY`: Your Gemini API Key
+  - `WORKER_AUTH_TOKEN`: If using Cloudflare Workers and Jira
+  - `CALLBACK_URL`: Your Cloudflare worker URL
+
 - Optional secrets (only needed if `USE_MAGEOS=NO`):
   - `MAGENTO_COMPOSER_AUTH_USER`: Adobe Commerce Marketplace username
   - `MAGENTO_COMPOSER_AUTH_PASS`: Adobe Commerce Marketplace password
-
 
 ## Getting Started
 
@@ -328,6 +333,9 @@ All environment variables can be customized in `.devcontainer/devcontainer.json`
 - `MYSQL_ROOT_PASSWORD` - MySQL root password (default: "password")
 - `HYVA_LICENCE_KEY` - Your Hyvä license token (required for Hyvä installation)
 - `HYVA_PROJECT_NAME` - Your Hyvä project name for Packagist access (required for Hyvä installation)
+- `GEMINI_API_KEY`: Your Gemini API Key
+- `WORKER_AUTH_TOKEN`: If using Cloudflare Workers and Jira
+- `CALLBACK_URL`: Your Cloudflare worker URL
 
 ## License
 
