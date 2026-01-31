@@ -6,14 +6,10 @@ export NG_CLI_ANALYTICS=false
 export CI=true
 
 # Project Paths
-REPO_ROOT="/workspaces/gardenerskitchen-direct-daffodil"
-PROJECT_ROOT="$REPO_ROOT/gardenerskitchen-daffodil" # fixed typo
+REPO_ROOT="$(git rev-parse --show-toplevel)"
 PLATFORM_LOG="/tmp/platform.log"
 AGENT_LOG_DIR="$REPO_ROOT/.devcontainer/logs"
 mkdir -p "$AGENT_LOG_DIR"
-
-# Move into the workspace (Angular needs to see angular.json)
-cd "$PROJECT_ROOT"
 
 # --- 2. Initialization ---
 export TASK_FILE="${1:-/tmp/task.json}"
@@ -44,7 +40,7 @@ PLAN_CONTENT=$(cat "$RESEARCH_FILE")
 WORKSPACE_CONTEXT=$(tree -I "node_modules|.git" -L 2 || echo "tree command unavailable")
 
 AGENT_DIRECTIVE=$(cat <<EOF
-You are a Senior Engineer. Work is being performed in the Angular project at $PROJECT_ROOT
+You are a Senior Web Developer  Engineer. Work is being performed in the Magento 2 and Hyva Project
 
 STRATEGY (The Plan):
 $PLAN_CONTENT
