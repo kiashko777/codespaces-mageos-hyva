@@ -83,10 +83,6 @@ else
         echo "Updating PHP Memory Limit"
         echo "memory_limit=2G" | sudo tee -a /usr/local/etc/php/conf.d/docker-fpm.ini
 
-        # Configure Composer to allow insecure packages
-        echo "Configuring Composer to bypass security advisories..."
-        ${COMPOSER_COMMAND} config --global audit.block-insecure false
-
         # Create project in temp directory then move files
         TEMP_DIR=$(mktemp -d)
         echo "Using temporary directory: ${TEMP_DIR}"
