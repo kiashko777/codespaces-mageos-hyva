@@ -17,6 +17,10 @@ PHPMYADMIN_CONTAINER="phpmyadmin"
 
 # AI Packages
 sudo npm install -g @google/gemini-cli
+
+# Hyva Skills For Gemini
+curl -fsSL https://raw.githubusercontent.com/hyva-themes/hyva-ai-tools/refs/heads/main/install.sh | sh -s gemini
+    
 sudo npm install -g @anthropic-ai/claude-code
 
 # Function to start a Docker container if not running
