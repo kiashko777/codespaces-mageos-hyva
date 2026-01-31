@@ -19,7 +19,7 @@ PHPMYADMIN_CONTAINER="phpmyadmin"
 sudo npm install -g @google/gemini-cli
 
 # Hyva Skills For Gemini
-curl -fsSL https://raw.githubusercontent.com/hyva-themes/hyva-ai-tools/refs/heads/main/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/hyva-themes/hyva-ai-tools/refs/heads/main/install.sh | sh gemini
     
 sudo npm install -g @anthropic-ai/claude-code
 
