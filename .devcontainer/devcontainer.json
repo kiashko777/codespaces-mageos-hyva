@@ -17,5 +17,5 @@
 	  "9200": { "label": "OpenSearch" }
 	},
 	"onCreateCommand": "bash -c '.devcontainer/scripts/setup.sh'",
-  "postAttachCommand": "bash -c '.devcontainer/scripts/start.sh'"
+    "postAttachCommand": "bash -c '.devcontainer/scripts/start.sh'"
 }
