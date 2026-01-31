@@ -227,9 +227,10 @@ fi;
   url="https://${CODESPACE_NAME}-8080.app.github.dev/"
   target="${CODESPACES_REPO_ROOT}/vendor/${PLATFORM_NAME}/framework/App/Response/HeaderProvider/XFrameOptions.php"
   sed -i "s|\$this->headerValue = \$xFrameOpt;|\$this->headerValue = '${url}';|" "$target"
+  
   # echo "Fetching Media Files"        
-  # ./mc cp wasabi/clients.bamford/bam_media.zip ${CODESPACES_REPO_ROOT}/bam_media.zip
-  # unzip -o ${CODESPACES_REPO_ROOT}/bam_media.zip -d ${CODESPACES_REPO_ROOT}/pub/ && rm ./bam_media.zip
+  # ./mc cp wasabi/wasabi-namespace/staging_media.zip ${CODESPACES_REPO_ROOT}/staging_media.zip
+  # unzip -o ${CODESPACES_REPO_ROOT}/staging_media.zip -d ${CODESPACES_REPO_ROOT}/pub/ && rm ./staging_media.zip
 fi
 
 show_ready_message
