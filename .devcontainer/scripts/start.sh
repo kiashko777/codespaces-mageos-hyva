@@ -10,6 +10,17 @@ COMPOSER_COMMAND="php -d memory_limit=-1 $(which composer)"
 OPENSEARCH_CONTAINER="opensearch-node"
 
 # ======================================================================================
+# Environment Ready Message
+# ======================================================================================
+show_ready_message() {
+  echo "============ Environment Ready =========="
+  echo "All services started successfully!"
+  echo "You can check service status with: .devcontainer/scripts/status.sh"
+  echo "And Docker containers with: docker ps"
+  echo "Have an awesome time! 💙 Develo.co.uk"
+}
+
+# ======================================================================================
 # Supervisor Services (Nginx, MariaDB, Redis)
 # ======================================================================================
 echo "Configuring Supervisor services..."
@@ -279,15 +290,3 @@ if [ "${INSTALL_SAMPLE_DATA}" = "YES" ]; then
         echo "Sample data media source not found or pub/media not writable. Skipping fix."
     fi
 fi
-
-
-# ======================================================================================
-# Environment Ready Message
-# ======================================================================================
-show_ready_message() {
-  echo "============ Environment Ready =========="
-  echo "All services started successfully!"
-  echo "You can check service status with: .devcontainer/scripts/status.sh"
-  echo "And Docker containers with: docker ps"
-  echo "Have an awesome time! 💙 Develo.co.uk"
-}
