@@ -71,16 +71,17 @@ RUN pecl install imagick redis xdebug && \
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Install MariaDB Server 10.6 (for Magento 2.4 compatibility)
-RUN apt-get update && \
-    mkdir -p /etc/apt/keyrings && \
-    curl -o /etc/apt/keyrings/mariadb-keyring.pgp 'https://mariadb.org/mariadb_release_signing_key.pgp' && \
-    echo "deb [signed-by=/etc/apt/keyrings/mariadb-keyring.pgp] https://deb.mariadb.org/10.6/debian bullseye main" | tee /etc/apt/sources.list.d/mariadb.list && \
-    apt-get update && \
-    echo "mariadb-server-10.6 mysql-server/root_password password ${MYSQL_ROOT_PASSWORD}" | debconf-set-selections && \
-    echo "mariadb-server-10.6 mysql-server/root_password_again password ${MYSQL_ROOT_PASSWORD}" | debconf-set-selections && \
-    apt-get install -y mariadb-server mariadb-client && \
-    mkdir -p /var/run/mysqld && \
-    chown mysql:mysql /var/run/mysqld
+RUN apt-get update && apt-get install -y software-properties-common dirmngr \
+    && curl -LsSO https://downloads.mariadb.com/MariaDB/mariadb_repo_setup \
+    && chmod +x mariadb_repo_setup \
+    && ./mariadb_repo_setup --mariadb-server-version="10.6" \
+    && apt-get update \
+    && echo "mariadb-server-10.6 mysql-server/root_password password ${MYSQL_ROOT_PASSWORD}" | debconf-set-selections \
+    && echo "mariadb-server-10.6 mysql-server/root_password_again password ${MYSQL_ROOT_PASSWORD}" | debconf-set-selections \
+    && apt-get install -y mariadb-server mariadb-client \
+    && mkdir -p /var/run/mysqld \
+    && chown mysql:mysql /var/run/mysqld \
+    && rm mariadb_repo_setup
 
 # Install Node.js and npm
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && \
