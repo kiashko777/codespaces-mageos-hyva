@@ -191,9 +191,7 @@ fi
   php -d memory_limit=-1 bin/magento deploy:mode:set developer
   php -d memory_limit=-1 bin/magento setup:di:compile
   php -d memory_limit=-1 bin/magento module:disable Magento_TwoFactorAuth
-  php -d memory_limit=-1 bin/magento config:set catalog/search/engine opensearch
-  php -d memory_limit=-1 bin/magento config:set catalog/search/opensearch_server_hostname localhost
-  php -d memory_limit=-1 bin/magento config:set catalog/search/opensearch_server_port 9200
+  php -d memory_limit=-1 bin/magento config:set catalog/search/engine elasticsuite
   php -d memory_limit=-1 bin/magento indexer:reindex
   php -d memory_limit=-1 bin/magento cache:flush
 
