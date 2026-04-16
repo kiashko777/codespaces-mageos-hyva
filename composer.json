@@ -40,7 +40,8 @@
     "mage-os/module-widget-sample-data": "2.2.1",
     "mage-os/module-wishlist-sample-data": "2.2.1",
     "mage-os/product-community-edition": "2.2.1",
-    "mage-os/sample-data-media": "2.2.1"
+    "mage-os/sample-data-media": "2.2.1",
+    "smile/elasticsuite": "~2.11"
   },
   "require-dev": {
     "mage-os/magento-allure-phpunit": "2.2.1",
