@@ -1,0 +1,31 @@
+type Query {
+    elasticsuiteSuggest(query: String! @doc(description: "The search term to get suggestions for")): ElasticsuiteSuggestResult
+        @resolver(class: "Develo\\ElasticSuiteGraphQl\\Model\\Resolver\\Suggest")
+        @doc(description: "Returns ElasticSuite autocomplete suggestions: matching products, categories, and popular search terms")
+        @cache(cacheable: false)
+}
+
+type ElasticsuiteSuggestResult @doc(description: "Autocomplete suggestions grouped by type") {
+    products: [ElasticsuiteSuggestProduct] @doc(description: "Up to 5 matching products")
+    categories: [ElasticsuiteSuggestCategory] @doc(description: "Up to 3 matching categories")
+    terms: [ElasticsuiteSuggestTerm] @doc(description: "Up to 5 popular search terms")
+}
+
+type ElasticsuiteSuggestProduct @doc(description: "A product suggestion from ElasticSuite autocomplete") {
+    name: String @doc(description: "Product name")
+    url: String @doc(description: "Full URL to the product page")
+    sku: String @doc(description: "Product SKU")
+    image_url: String @doc(description: "Absolute URL of the product thumbnail")
+    price: Float @doc(description: "Product final price in store currency")
+}
+
+type ElasticsuiteSuggestCategory @doc(description: "A category suggestion from ElasticSuite autocomplete") {
+    name: String @doc(description: "Category name")
+    url: String @doc(description: "Full URL to the category page")
+    breadcrumb: [String] @doc(description: "Ancestor category names, from root to parent")
+}
+
+type ElasticsuiteSuggestTerm @doc(description: "A popular search term suggestion") {
+    query_text: String @doc(description: "The search term")
+    num_results: Int @doc(description: "Number of results this term returns")
+}
