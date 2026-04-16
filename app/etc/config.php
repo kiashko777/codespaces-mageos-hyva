@@ -350,6 +350,7 @@ return [
         'Magento_WishlistSampleData' => 1,
         'Aligent_Pci4Compatibility' => 1,
         'Creatuity_Interception' => 1,
+        'Smile_ElasticsuiteCore' => 1,
         'Graycore_Cors' => 1,
         'MageOS_AutomaticTranslation' => 1,
         'MageOS_InventoryReservationsGrid' => 1,
@@ -357,6 +358,18 @@ return [
         'MageOS_PageBuilderTemplateImportExport' => 1,
         'MageOS_PageBuilderWidget' => 1,
         'MageOS_ThemeAdminhtmlSwitcher' => 1,
-        'MageOS_ThemeOptimization' => 1
+        'MageOS_ThemeOptimization' => 1,
+        'Smile_ElasticsuiteAdminNotification' => 1,
+        'Smile_ElasticsuiteCatalog' => 1,
+        'Smile_ElasticsuiteThesaurus' => 1,
+        'Smile_ElasticsuiteCatalogGraphQl' => 1,
+        'Smile_ElasticsuiteCatalogRule' => 1,
+        'Smile_ElasticsuiteCatalogOptimizer' => 1,
+        'Smile_ElasticsuiteTracker' => 1,
+        'Smile_ElasticsuiteIndices' => 1,
+        'Smile_ElasticsuiteSwatches' => 1,
+        'Develo_ElasticSuiteGraphQl' => 1,
+        'Smile_ElasticsuiteAnalytics' => 1,
+        'Smile_ElasticsuiteVirtualCategory' => 1
     ]
 ];

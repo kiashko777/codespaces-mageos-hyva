@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="Develo_ElasticSuiteGraphQl">
+        <sequence>
+            <module name="Magento_GraphQl"/>
+            <module name="Smile_ElasticsuiteCatalog"/>
+            <module name="Smile_ElasticsuiteThesaurus"/>
+        </sequence>
+    </module>
+</config>
