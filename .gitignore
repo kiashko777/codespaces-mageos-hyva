@@ -190,4 +190,4 @@ dump.rdb
 # Custom modules in app/code/ will be tracked
 # Custom themes in app/design/ will be tracked
 # Custom translations in app/i18n/ will be tracked
-# However, vendor-provided themes/modules are ignored (they come from composer)
+# However, vendor-provided themes/modules are ignored (they come from composer).worktrees/
