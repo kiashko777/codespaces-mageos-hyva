@@ -1,0 +1,17 @@
+{
+    "name": "develo/module-elasticsuite-graphql",
+    "description": "Exposes ElasticSuite autocomplete suggest via GraphQL",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "require": {
+        "php": "~8.3.0",
+        "smile/elasticsuite-catalog": "~2.11",
+        "smile/elasticsuite-thesaurus": "~2.11"
+    },
+    "autoload": {
+        "files": ["registration.php"],
+        "psr-4": {
+            "Develo\\ElasticSuiteGraphQl\\": ""
+        }
+    }
+}
