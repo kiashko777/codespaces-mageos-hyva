@@ -1,0 +1,20 @@
+{
+    "name": "develo/module-snowdog-menu-graphql-extension",
+    "description": "Exposes Snowdog menu cms_block node type over GraphQL with rendered HTML content",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "require": {
+        "php": "~8.1.0||~8.2.0||~8.3.0",
+        "snowdog/module-menu": "*",
+        "magento/module-cms-graph-ql": "*",
+        "magento/framework": "*"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Develo\\SnowdogMenuGraphQlExtension\\": ""
+        }
+    }
+}

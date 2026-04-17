@@ -1,0 +1,5 @@
+type SnowdogMenuCmsBlockNode implements SnowdogMenuNodeInterface, SnowdogMenuNodeContentFieldInterface, SnowdogMenuNodeImageFieldInterface @doc(description: "Snowdog menu CMS block node type") {
+    block_identifier: String @doc(description: "Identifier of the linked CMS block (the node's stored content value)") @resolver(class: "Develo\\SnowdogMenuGraphQlExtension\\Model\\Resolver\\BlockIdentifier")
+    block_title: String @doc(description: "Title of the linked CMS block") @resolver(class: "Develo\\SnowdogMenuGraphQlExtension\\Model\\Resolver\\BlockTitle")
+    html_content: String @doc(description: "Rendered CMS block HTML with widget/directive expansion, or null if the block is missing or disabled") @resolver(class: "Develo\\SnowdogMenuGraphQlExtension\\Model\\Resolver\\HtmlContent")
+}
