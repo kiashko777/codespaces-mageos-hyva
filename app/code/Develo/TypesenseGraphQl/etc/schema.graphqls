@@ -1,0 +1,89 @@
+type Query {
+    typeseenseSuggest(query: String! @doc(description: "The search term to get autocomplete suggestions for")): TypeseenseSuggestResult
+        @resolver(class: "Develo\\TypesenseGraphQl\\Model\\Resolver\\Suggest")
+        @doc(description: "Returns Typesense autocomplete suggestions: matching products, categories, and popular search terms")
+        @cache(cacheable: false)
+
+    typesenseSearch(
+        query: String! @doc(description: "The full-text search query")
+        page: Int = 1 @doc(description: "Page number (1-indexed)")
+        pageSize: Int = 20 @doc(description: "Results per page")
+        filters: [TypesenseFilterInput] @doc(description: "Optional attribute filters")
+        sort: TypesenseSortInput @doc(description: "Optional sort field and direction")
+    ): TypesenseSearchResult
+        @resolver(class: "Develo\\TypesenseGraphQl\\Model\\Resolver\\Search")
+        @doc(description: "Returns Typesense full-text search results with facets and pagination")
+        @cache(cacheable: false)
+}
+
+type TypeseenseSuggestResult @doc(description: "Autocomplete suggestions grouped by type") {
+    products: [TypeseenseSuggestProduct] @doc(description: "Up to 5 matching products")
+    categories: [TypeseenseSuggestCategory] @doc(description: "Up to 3 matching categories")
+    terms: [TypeseenseSuggestTerm] @doc(description: "Popular search terms (empty until Typesense Analytics is configured)")
+}
+
+type TypeseenseSuggestProduct {
+    name: String
+    url: String
+    sku: String
+    image_url: String
+    price: Float
+}
+
+type TypeseenseSuggestCategory {
+    name: String
+    url: String
+    breadcrumb: [String]
+}
+
+type TypeseenseSuggestTerm {
+    query_text: String
+    num_results: Int
+}
+
+type TypesenseSearchResult @doc(description: "Full search results with facets and pagination") {
+    items: [TypesenseProductItem]
+    facets: [TypesenseFacet]
+    total_count: Int
+    search_time_ms: Int
+    page_info: TypesensePageInfo
+}
+
+type TypesenseProductItem {
+    id: Int
+    name: String
+    sku: String
+    url: String
+    image_url: String
+    price: Float
+    categories: [String]
+}
+
+type TypesenseFacet {
+    name: String
+    label: String
+    options: [TypesenseFacetOption]
+}
+
+type TypesenseFacetOption {
+    value: String
+    label: String
+    count: Int
+}
+
+type TypesensePageInfo {
+    current_page: Int
+    page_size: Int
+    total_pages: Int
+}
+
+input TypesenseFilterInput {
+    field: String!
+    value: String!
+    condition_type: String
+}
+
+input TypesenseSortInput {
+    field: String!
+    direction: String!
+}
