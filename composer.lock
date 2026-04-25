@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "012c44e159bcfbf50080b443c8d93bdd",
+    "content-hash": "22bb35469aad3af5479012056218001b",
     "packages": [
         {
             "name": "2tvenom/cborencode",
@@ -20010,6 +20010,241 @@
             "time": "2025-09-14T11:18:39+00:00"
         },
         {
+            "name": "monogo/magento-typesense-analytics",
+            "version": "1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MonogoPolska/magento-typesense-analytics.git",
+                "reference": "9e43eca50ce43f200859f9d087a4a1b7a6b0c922"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MonogoPolska/magento-typesense-analytics/zipball/9e43eca50ce43f200859f9d087a4a1b7a6b0c922",
+                "reference": "9e43eca50ce43f200859f9d087a4a1b7a6b0c922",
+                "shasum": ""
+            },
+            "require": {
+                "monogo/magento-typesense-core": "*",
+                "php": ">=8.1"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Monogo\\TypesenseAnalytics\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Typesense Analytics",
+            "homepage": "https://github.com/MonogoPolska/magento-typesense-analytics",
+            "support": {
+                "issues": "https://github.com/MonogoPolska/magento-typesense-analytics/issues",
+                "source": "https://github.com/MonogoPolska/magento-typesense-analytics/tree/1.0.5"
+            },
+            "time": "2026-04-07T13:46:26+00:00"
+        },
+        {
+            "name": "monogo/magento-typesense-catalog-categories",
+            "version": "1.0.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MonogoPolska/magento-typesense-catalog-categories.git",
+                "reference": "72a38d3f62915ca53d1aeaf99e8c6fa014c56d71"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MonogoPolska/magento-typesense-catalog-categories/zipball/72a38d3f62915ca53d1aeaf99e8c6fa014c56d71",
+                "reference": "72a38d3f62915ca53d1aeaf99e8c6fa014c56d71",
+                "shasum": ""
+            },
+            "require": {
+                "monogo/magento-typesense-core": "^1.0",
+                "php": ">=8.1"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Monogo\\TypesenseCatalogCategories\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "Typesense Catalog Categories indexer Magento implementation",
+            "homepage": "https://github.com/MonogoPolska/magento-typesense-catalog-categories",
+            "support": {
+                "issues": "https://github.com/MonogoPolska/magento-typesense-catalog-categories/issues",
+                "source": "https://github.com/MonogoPolska/magento-typesense-catalog-categories/tree/1.0.11"
+            },
+            "time": "2026-03-19T14:44:00+00:00"
+        },
+        {
+            "name": "monogo/magento-typesense-catalog-products",
+            "version": "1.0.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MonogoPolska/magento-typesense-catalog-products.git",
+                "reference": "8dddc2c9de482e07bd18db6a7174d697433de214"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MonogoPolska/magento-typesense-catalog-products/zipball/8dddc2c9de482e07bd18db6a7174d697433de214",
+                "reference": "8dddc2c9de482e07bd18db6a7174d697433de214",
+                "shasum": ""
+            },
+            "require": {
+                "monogo/magento-typesense-catalog-categories": "^1.0",
+                "monogo/magento-typesense-core": "^1.0",
+                "php": ">=8.1"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Monogo\\TypesenseCatalogProducts\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "Typesense Catalog Products indexer Magento implementation",
+            "homepage": "https://github.com/MonogoPolska/magento-typesense-catalog-products",
+            "support": {
+                "issues": "https://github.com/MonogoPolska/magento-typesense-catalog-products/issues",
+                "source": "https://github.com/MonogoPolska/magento-typesense-catalog-products/tree/1.0.10"
+            },
+            "time": "2026-04-07T10:51:48+00:00"
+        },
+        {
+            "name": "monogo/magento-typesense-cms-pages",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MonogoPolska/magento-typesense-cms-pages.git",
+                "reference": "ab05efc88ef1370b1157002b4dea90a221244db3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MonogoPolska/magento-typesense-cms-pages/zipball/ab05efc88ef1370b1157002b4dea90a221244db3",
+                "reference": "ab05efc88ef1370b1157002b4dea90a221244db3",
+                "shasum": ""
+            },
+            "require": {
+                "monogo/magento-typesense-core": "^1.0",
+                "php": ">=8.1"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Monogo\\TypesenseCmsPages\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "Typesense CMS Pages indexer Magento implementation",
+            "homepage": "https://github.com/MonogoPolska/magento-typesense-cms-pages",
+            "support": {
+                "issues": "https://github.com/MonogoPolska/magento-typesense-cms-pages/issues",
+                "source": "https://github.com/MonogoPolska/magento-typesense-cms-pages/tree/1.0.4"
+            },
+            "time": "2023-08-23T13:06:33+00:00"
+        },
+        {
+            "name": "monogo/magento-typesense-core",
+            "version": "1.0.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MonogoPolska/magento-typesense-core.git",
+                "reference": "54b992c773ba251e2d8c69627a4a7cbc122e6112"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MonogoPolska/magento-typesense-core/zipball/54b992c773ba251e2d8c69627a4a7cbc122e6112",
+                "reference": "54b992c773ba251e2d8c69627a4a7cbc122e6112",
+                "shasum": ""
+            },
+            "require": {
+                "ext-dom": "*",
+                "ext-libxml": "*",
+                "ext-mbstring": "*",
+                "php": ">=8.1",
+                "php-http/curl-client": "*",
+                "typesense/typesense-php": "^6.0"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Monogo\\TypesenseCore\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "Typesense Core Magento implementation",
+            "homepage": "https://github.com/MonogoPolska/magento-typesense-core",
+            "support": {
+                "issues": "https://github.com/MonogoPolska/magento-typesense-core/issues",
+                "source": "https://github.com/MonogoPolska/magento-typesense-core/tree/1.0.13"
+            },
+            "time": "2026-03-20T08:14:22+00:00"
+        },
+        {
+            "name": "monogo/magento-typesense-suite",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MonogoPolska/magento-typesense-suite.git",
+                "reference": "6599e0f8fefeb9a74503e266871f3941aedf0724"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MonogoPolska/magento-typesense-suite/zipball/6599e0f8fefeb9a74503e266871f3941aedf0724",
+                "reference": "6599e0f8fefeb9a74503e266871f3941aedf0724",
+                "shasum": ""
+            },
+            "require": {
+                "monogo/magento-typesense-analytics": "^1.0",
+                "monogo/magento-typesense-catalog-categories": "^1.0",
+                "monogo/magento-typesense-catalog-products": "^1.0",
+                "monogo/magento-typesense-cms-pages": "^1.0",
+                "monogo/magento-typesense-core": "^1.0",
+                "php": ">=8.1"
+            },
+            "type": "magento2-module",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "Set of packages for Magento 2 Typesense implementation",
+            "homepage": "https://github.com/MonogoPolska/magento-typesense-suite",
+            "support": {
+                "issues": "https://github.com/MonogoPolska/magento-typesense-suite/issues",
+                "source": "https://github.com/MonogoPolska/magento-typesense-suite/tree/1.0.2"
+            },
+            "time": "2023-08-25T13:48:24+00:00"
+        },
+        {
             "name": "monolog/monolog",
             "version": "3.10.0",
             "source": {
@@ -21065,6 +21300,71 @@
                 "source": "https://github.com/php-http/client-common/tree/2.7.3"
             },
             "time": "2025-11-29T19:12:34+00:00"
+        },
+        {
+            "name": "php-http/curl-client",
+            "version": "2.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-http/curl-client.git",
+                "reference": "f59d6992065f44be8b8fb484dd678a919c27dbf2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-http/curl-client/zipball/f59d6992065f44be8b8fb484dd678a919c27dbf2",
+                "reference": "f59d6992065f44be8b8fb484dd678a919c27dbf2",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": "^8.1",
+                "php-http/discovery": "^1.6",
+                "php-http/httplug": "^2.0",
+                "php-http/message": "^1.2",
+                "psr/http-client": "^1.0",
+                "psr/http-factory-implementation": "^1.0",
+                "symfony/options-resolver": "^3.4 || ^4.0 || ^5.0 || ^6.0 || ^7.0 || ^8.0"
+            },
+            "provide": {
+                "php-http/async-client-implementation": "1.0",
+                "php-http/client-implementation": "1.0",
+                "psr/http-client-implementation": "1.0"
+            },
+            "require-dev": {
+                "guzzlehttp/psr7": "^2.0",
+                "laminas/laminas-diactoros": "^2.0 || ^3.0",
+                "php-http/client-integration-tests": "^4.0",
+                "php-http/message-factory": "^1.1",
+                "phpunit/phpunit": "^9.6.17 || ^10.0 || ^11.0 || ^12.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Http\\Client\\Curl\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Михаил Красильников",
+                    "email": "m.krasilnikov@yandex.ru"
+                }
+            ],
+            "description": "PSR-18 and HTTPlug Async client with cURL",
+            "homepage": "http://php-http.org",
+            "keywords": [
+                "curl",
+                "http",
+                "psr-18"
+            ],
+            "support": {
+                "issues": "https://github.com/php-http/curl-client/issues",
+                "source": "https://github.com/php-http/curl-client/tree/2.4.0"
+            },
+            "time": "2025-12-09T12:02:56+00:00"
         },
         {
             "name": "php-http/discovery",
