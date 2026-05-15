@@ -14,4 +14,14 @@
                 sortOrder="10"/>
     </type>
 
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="workwear_logo_listing_data_source" xsi:type="string">
+                    Workwear\Personalization\Model\ResourceModel\CustomerLogo\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
 </config>
