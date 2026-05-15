@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\QuoteGraphQl\Model\CartItem\DataProvider\UpdateCartItems">
+        <plugin name="workwear_personalization_cart_item_update"
+                type="Workwear\Personalization\Model\Resolver\UpdateCartItemPersonalization"
+                sortOrder="10"/>
+    </type>
+    <type name="Magento\QuoteGraphQl\Model\CartItem\CartItemsUidArgsProcessor">
+        <plugin name="workwear_personalization_cart_item_uid_tolerance"
+                type="Workwear\Personalization\Plugin\GraphQl\CartItemUidTolerance"
+                sortOrder="1"/>
+    </type>
+</config>

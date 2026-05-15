@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <workwear>
+            <personalization>
+                <logo_fee>9.99</logo_fee>
+                <text_fee>4.99</text_fee>
+                <max_file_size>10485760</max_file_size>
+                <allowed_mime>image/png,image/jpeg,image/svg+xml</allowed_mime>
+            </personalization>
+        </workwear>
+    </default>
+</config>

@@ -1,0 +1,50 @@
+enum WorkwearApplicationType {
+    EMBROIDERY @doc(description: "Embroidered logo or text")
+    PRINT @doc(description: "Printed logo or text")
+}
+
+enum WorkwearContentType {
+    LOGO @doc(description: "Image logo uploaded via REST API")
+    TEXT @doc(description: "Custom text lines")
+}
+
+input WorkwearPersonalizationInput @doc(description: "Single personalization entry for a garment position") {
+    position_code: String! @doc(description: "Position code, e.g. LEFT_CHEST. Must be configured on the product.")
+    application_type: WorkwearApplicationType! @doc(description: "Embroidery or print")
+    content_type: WorkwearContentType! @doc(description: "Logo file or text")
+    logo_uid: String @doc(description: "logo_uid returned by REST upload endpoint. Required when content_type is LOGO.")
+    text_lines: [String] @doc(description: "Up to 3 text lines, each max 22 characters. Required when content_type is TEXT.")
+    font_family: String @doc(description: "Optional font family for text personalizations")
+}
+
+extend input CartItemUpdateInput {
+    personalizations: [WorkwearPersonalizationInput] @doc(description: "Workwear logo and text personalizations for this cart item")
+}
+
+type WorkwearAvailablePosition @doc(description: "Personalization position available for a product") {
+    position_code: String! @doc(description: "Position code, e.g. LEFT_CHEST")
+}
+
+interface ProductInterface {
+    available_positions: [WorkwearAvailablePosition!] @doc(description: "Personalization positions available for this product") @resolver(class: "\\Workwear\\Personalization\\Model\\Resolver\\AvailablePositions")
+}
+
+extend type CartPrices {
+    personalization_fee: Money @doc(description: "Total personalization setup fee charged on this cart") @resolver(class: "\\Workwear\\Personalization\\Model\\Resolver\\PersonalizationFeeResolver")
+}
+
+extend interface CartItemInterface {
+    personalization_data: String @doc(description: "JSON-encoded personalization entries for this cart item, null if none") @resolver(class: "\\Workwear\\Personalization\\Model\\Resolver\\CartItemPersonalizationData")
+}
+
+type WorkwearCustomerLogo @doc(description: "A logo uploaded by the customer") {
+    uid: String! @doc(description: "Unique identifier (SHA-256 hash) returned by the upload endpoint")
+    url: String! @doc(description: "Absolute URL to the logo file in media storage")
+    filename: String! @doc(description: "Original filename derived from the stored path")
+    status: String! @doc(description: "Approval status: pending, approved, or rejected")
+    created_at: String! @doc(description: "ISO-8601 timestamp when the logo was uploaded")
+}
+
+extend type Query {
+    customerLogos: [WorkwearCustomerLogo!]! @doc(description: "Returns all logos uploaded by the authenticated customer") @resolver(class: "\\Workwear\\Personalization\\Model\\Resolver\\CustomerLogosResolver") @cache(cacheable: false)
+}

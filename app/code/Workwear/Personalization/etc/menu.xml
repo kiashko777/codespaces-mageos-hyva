@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Workwear_Personalization::root"
+             title="Workwear"
+             module="Workwear_Personalization"
+             sortOrder="100"
+             resource="Workwear_Personalization::logo_moderation"/>
+        <add id="Workwear_Personalization::logo_moderation"
+             title="Logo Moderation"
+             module="Workwear_Personalization"
+             sortOrder="10"
+             parent="Workwear_Personalization::root"
+             action="workwear_logo/logo/index"
+             resource="Workwear_Personalization::logo_moderation"/>
+    </menu>
+</config>

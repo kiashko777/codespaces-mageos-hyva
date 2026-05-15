@@ -1,0 +1,73 @@
+<!--@subject Logo Approved – No Setup Fee on Future Orders @-->
+<!--@vars
+{
+    "var customer_name": "Customer Name",
+    "var logo_uid": "Logo UID",
+    "var logo_url": "Logo Image URL",
+    "var store_name": "Store Name"
+}
+@-->
+{{template config_path="design/email/header_template"}}
+
+<table class="message-details" style="width:100%; border-collapse:collapse; margin-bottom:24px;">
+    <tr>
+        <td style="padding:24px 0 8px; font-size:22px; font-weight:bold; color:#333333;">
+            Your Logo Has Been Approved
+        </td>
+    </tr>
+    <tr>
+        <td style="padding:0 0 16px; font-size:15px; color:#555555; line-height:1.6;">
+            Hi {{var customer_name}},
+        </td>
+    </tr>
+    <tr>
+        <td style="padding:0 0 16px; font-size:15px; color:#555555; line-height:1.6;">
+            Great news! Your logo has been reviewed and approved by our team.
+            It is now ready to be applied to your workwear orders.
+        </td>
+    </tr>
+</table>
+
+<table style="width:100%; border-collapse:collapse; margin-bottom:24px;">
+    <tr>
+        <td style="padding:16px; background-color:#f8f8f8; border:1px solid #e0e0e0; border-radius:4px; text-align:center;">
+            <img src="{{var logo_url}}"
+                 alt="Your approved logo"
+                 style="max-width:240px; max-height:240px; display:block; margin:0 auto 12px;"
+                 width="240"/>
+            <p style="margin:8px 0 0; font-size:12px; color:#888888; word-break:break-all;">
+                Logo reference: {{var logo_uid}}
+            </p>
+        </td>
+    </tr>
+</table>
+
+<table style="width:100%; border-collapse:collapse; margin-bottom:24px;">
+    <tr>
+        <td style="padding:16px; background-color:#e8f5e9; border-left:4px solid #4caf50;">
+            <p style="margin:0; font-size:15px; color:#2e7d32; font-weight:bold;">
+                Setup Fee Waived on Future Orders
+            </p>
+            <p style="margin:8px 0 0; font-size:14px; color:#555555; line-height:1.6;">
+                Because this logo is approved, the £9.99 setup fee will be
+                <strong>automatically waived</strong> on all your future orders using this logo.
+            </p>
+        </td>
+    </tr>
+</table>
+
+<table style="width:100%; border-collapse:collapse; margin-bottom:24px;">
+    <tr>
+        <td style="padding:0 0 16px; font-size:15px; color:#555555; line-height:1.6;">
+            If you have any questions about your order or personalisation options,
+            please don't hesitate to contact us.
+        </td>
+    </tr>
+    <tr>
+        <td style="padding:0 0 8px; font-size:15px; color:#555555; line-height:1.6;">
+            Thank you for choosing {{var store_name}}.
+        </td>
+    </tr>
+</table>
+
+{{template config_path="design/email/footer_template"}}

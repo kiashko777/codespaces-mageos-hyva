@@ -354,8 +354,10 @@ return [
         'Smile_ElasticsuiteCore' => 1,
         'Snowdog_Menu' => 1,
         'Techyouknow_SocialLogin' => 1,
-        'Monogo_TypesenseCore' => 1,
+        'Develo_TypesenseConfig' => 1,
+        'Develo_UrlRewriteGraphQlFix' => 0,
         'Graycore_Cors' => 1,
+        'Local_SalesAdminFix' => 1,
         'MageOS_AutomaticTranslation' => 1,
         'MageOS_InventoryReservationsGrid' => 1,
         'MageOS_MetaRobotsTag' => 1,
@@ -363,11 +365,6 @@ return [
         'MageOS_PageBuilderWidget' => 1,
         'MageOS_ThemeAdminhtmlSwitcher' => 1,
         'MageOS_ThemeOptimization' => 1,
-        'Monogo_TypesenseAnalytics' => 1,
-        'Monogo_TypesenseCatalogCategories' => 1,
-        'Monogo_TypesenseCatalogProducts' => 1,
-        'Monogo_TypesenseCmsPages' => 1,
-        'Develo_TypesenseConfig' => 1,
         'Smile_ElasticsuiteAdminNotification' => 1,
         'Smile_ElasticsuiteCatalog' => 1,
         'Smile_ElasticsuiteThesaurus' => 1,
@@ -381,6 +378,7 @@ return [
         'Smile_ElasticsuiteAnalytics' => 1,
         'Smile_ElasticsuiteVirtualCategory' => 1,
         'Develo_SnowdogMenuGraphQlExtension' => 1,
-        'Develo_SocialLoginGraphQl' => 1
+        'Develo_SocialLoginGraphQl' => 1,
+        'Workwear_Personalization' => 1
     ]
 ];

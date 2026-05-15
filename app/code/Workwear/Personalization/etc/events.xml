@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="workwear_logo_status_approved">
+        <observer name="workwear_send_logo_approved_email"
+                  instance="Workwear\Personalization\Observer\SendLogoApprovedEmail"/>
+    </event>
+</config>

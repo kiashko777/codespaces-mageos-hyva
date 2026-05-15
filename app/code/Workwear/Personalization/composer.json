@@ -1,0 +1,21 @@
+{
+    "name": "workwear/module-personalization",
+    "description": "Workwear logo personalization engine for Mage-OS",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "require": {
+        "php": ">=8.3",
+        "magento/framework": "*",
+        "magento/module-quote": "*",
+        "magento/module-sales": "*",
+        "magento/module-graph-ql": "*"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Workwear\\Personalization\\": ""
+        }
+    }
+}

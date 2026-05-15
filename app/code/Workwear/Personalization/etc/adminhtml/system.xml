@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="workwear" translate="label" sortOrder="900">
+            <label>Workwear</label>
+        </tab>
+        <section id="workwear" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Personalization</label>
+            <tab>workwear</tab>
+            <resource>Workwear_Personalization::config</resource>
+            <group id="personalization" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Setup Fees</label>
+                <field id="logo_fee" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Logo Setup Fee</label>
+                    <comment>One-time fee charged for a new logo file (£). Default: 9.99</comment>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                </field>
+                <field id="text_fee" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Text Logo Setup Fee</label>
+                    <comment>One-time fee charged for new text personalisation (£). Default: 4.99</comment>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                </field>
+                <field id="max_file_size" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Maximum Logo File Size (bytes)</label>
+                    <comment>Default: 10485760 (10 MB)</comment>
+                    <validate>validate-digits validate-greater-than-zero</validate>
+                </field>
+                <field id="allowed_mime" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Allowed MIME Types</label>
+                    <comment>Comma-separated. Default: image/png,image/jpeg,image/svg+xml</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

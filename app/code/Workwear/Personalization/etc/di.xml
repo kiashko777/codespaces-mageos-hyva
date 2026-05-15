@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Workwear\Personalization\Api\LogoUploadInterface"
+                type="Workwear\Personalization\Model\LogoUpload"/>
+    <preference for="Workwear\Personalization\Api\Data\LogoUploadResultInterface"
+                type="Workwear\Personalization\Model\Data\LogoUploadResult"/>
+    <preference for="Workwear\Personalization\Api\Data\CustomerLogoInterface"
+                type="Workwear\Personalization\Model\Data\CustomerLogoData"/>
+
+    <type name="Magento\Quote\Model\Quote\Item\ToOrderItem">
+        <plugin name="workwear_personalization_quote_item_to_order_item"
+                type="Workwear\Personalization\Plugin\Quote\Item\ToOrderItemPlugin"
+                sortOrder="10"/>
+    </type>
+
+</config>
