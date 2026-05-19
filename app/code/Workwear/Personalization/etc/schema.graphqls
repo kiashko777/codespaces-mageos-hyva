@@ -48,3 +48,7 @@ type WorkwearCustomerLogo @doc(description: "A logo uploaded by the customer") {
 extend type Query {
     customerLogos: [WorkwearCustomerLogo!]! @doc(description: "Returns all logos uploaded by the authenticated customer") @resolver(class: "\\Workwear\\Personalization\\Model\\Resolver\\CustomerLogosResolver") @cache(cacheable: false)
 }
+
+extend interface OrderItemInterface {
+    workwear_personalization: String @doc(description: "JSON-encoded workwear personalization entries for this order item, null if none") @resolver(class: "\\Workwear\\Personalization\\Model\\Resolver\\OrderItemPersonalizationData")
+}
