@@ -358,6 +358,7 @@ return [
         'Develo_UrlRewriteGraphQlFix' => 0,
         'Graycore_Cors' => 1,
         'Local_SalesAdminFix' => 1,
+        'Local_SalesGraphQlFix' => 1,
         'MageOS_AutomaticTranslation' => 1,
         'MageOS_InventoryReservationsGrid' => 1,
         'MageOS_MetaRobotsTag' => 1,
