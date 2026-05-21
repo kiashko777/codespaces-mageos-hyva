@@ -357,6 +357,7 @@ return [
         'Develo_TypesenseConfig' => 1,
         'Develo_UrlRewriteGraphQlFix' => 0,
         'Graycore_Cors' => 1,
+        'Local_OrderParentSku' => 1,
         'Local_SalesAdminFix' => 1,
         'Local_SalesGraphQlFix' => 1,
         'MageOS_AutomaticTranslation' => 1,
