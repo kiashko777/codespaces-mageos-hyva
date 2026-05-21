@@ -44,7 +44,11 @@ class UpdateCartItemPersonalization
 
             $itemId = (int) ($item['cart_item_id'] ?? 0);
             if ($itemId === 0 && !empty($item['cart_item_uid'])) {
-                $itemId = (int) base64_decode((string) $item['cart_item_uid']);
+                $decoded = base64_decode((string) $item['cart_item_uid'], true);
+                if ($decoded === false || !ctype_digit($decoded)) {
+                    continue;
+                }
+                $itemId = (int) $decoded;
             }
             if ($itemId === 0) {
                 continue;

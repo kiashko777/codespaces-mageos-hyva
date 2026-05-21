@@ -211,10 +211,17 @@ class LogoUpload implements LogoUploadInterface
     {
         $prev = libxml_use_internal_errors(true);
         $dom  = new \DOMDocument();
-        $dom->load($absolutePath, LIBXML_NONET | LIBXML_NOENT);
+        // LIBXML_NONET: block network fetches. Do NOT use LIBXML_NOENT — it expands entities (XXE / Billion Laughs risk).
+        $dom->load($absolutePath, LIBXML_NONET);
         libxml_use_internal_errors($prev);
 
         $xpath = new \DOMXPath($dom);
+
+        // Strip DTD nodes defensively (custom entity declarations).
+        $doctype = $dom->doctype;
+        if ($doctype !== null) {
+            $doctype->parentNode?->removeChild($doctype);
+        }
 
         $dangerous = $xpath->query('//*[local-name()="script"] | //*[local-name()="foreignObject"]');
         if ($dangerous !== false) {

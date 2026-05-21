@@ -31,7 +31,11 @@ class ToOrderItemPlugin
 
         $orderItem->setData('personalization_data', $json);
 
-        $personalizations = json_decode($json, true);
+        try {
+            $personalizations = json_decode($json, true, 512, JSON_THROW_ON_ERROR);
+        } catch (\JsonException) {
+            return $orderItem;
+        }
         if (!is_array($personalizations)) {
             return $orderItem;
         }

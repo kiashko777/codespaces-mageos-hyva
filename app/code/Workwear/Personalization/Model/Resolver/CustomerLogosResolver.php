@@ -33,7 +33,12 @@ class CustomerLogosResolver implements ResolverInterface
         }
 
         $customerId = (int) $context->getUserId();
-        $mediaBaseUrl = $this->storeManager->getStore()->getBaseUrl(UrlInterface::URL_TYPE_MEDIA);
+
+        try {
+            $mediaBaseUrl = $this->storeManager->getStore()->getBaseUrl(UrlInterface::URL_TYPE_MEDIA);
+        } catch (\Exception) {
+            $mediaBaseUrl = '';
+        }
 
         $collection = $this->collectionFactory->create();
         $collection->addFieldToFilter('customer_id', ['eq' => $customerId]);
