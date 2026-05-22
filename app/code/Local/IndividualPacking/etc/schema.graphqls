@@ -1,0 +1,38 @@
+type Mutation {
+    setIndividualPackingOnCartItem(
+        input: SetIndividualPackingOnCartItemInput!
+    ): SetIndividualPackingOnCartItemOutput
+        @resolver(class: "\\Local\\IndividualPacking\\GraphQl\\Resolver\\SetIndividualPackingOnCartItem")
+        @doc(description: "Select or deselect individual packing for a cart item")
+}
+
+input SetIndividualPackingOnCartItemInput @doc(description: "Input for setIndividualPackingOnCartItem") {
+    cart_id: String! @doc(description: "Masked cart ID")
+    cart_item_id: Int! @doc(description: "Numeric cart item ID")
+    individual_packing: Boolean! @doc(description: "True to enable individual packing for this item")
+}
+
+type SetIndividualPackingOnCartItemOutput @doc(description: "Output for setIndividualPackingOnCartItem") {
+    cart: Cart! @doc(description: "The updated cart")
+}
+
+extend interface CartItemInterface {
+    individual_packing_selected: Boolean
+        @doc(description: "Whether individual packing is selected for this cart item")
+        @resolver(class: "\\Local\\IndividualPacking\\GraphQl\\Resolver\\CartItemIndividualPackingData")
+}
+
+extend type Cart {
+    individual_packing_fee: Float
+        @doc(description: "Total individual packing fee for the cart")
+        @resolver(class: "\\Local\\IndividualPacking\\GraphQl\\Resolver\\IndividualPackingFeeResolver")
+    individual_packing_fee_formatted: String
+        @doc(description: "Total individual packing fee formatted as currency string")
+        @resolver(class: "\\Local\\IndividualPacking\\GraphQl\\Resolver\\IndividualPackingFeeResolver")
+}
+
+interface ProductInterface {
+    individually_packable: String
+        @doc(description: "Individual packing eligibility: eligible, pre_packaged, boxed, not_eligible")
+        @resolver(class: "\\Local\\IndividualPacking\\GraphQl\\Resolver\\IndividuallyPackableResolver")
+}
