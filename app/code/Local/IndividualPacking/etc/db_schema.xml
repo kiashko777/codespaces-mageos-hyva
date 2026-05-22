@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="quote_item" resource="checkout">
+        <column xsi:type="smallint" name="individual_packing_selected"
+                unsigned="true" nullable="true" default="0"
+                comment="Individual packing selected (1=yes, 0=no)"/>
+    </table>
+</schema>
