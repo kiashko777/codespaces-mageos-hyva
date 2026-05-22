@@ -90,8 +90,9 @@ class SaveIndividualPackingToOrderItemTest extends TestCase
 
         $captured = null;
         $orderItem->method('setProductOptions')
-            ->willReturnCallback(function (array $opts) use (&$captured) {
+            ->willReturnCallback(function (array $opts) use (&$captured, $orderItem) {
                 $captured = $opts;
+                return $orderItem;
             });
 
         $this->plugin->afterConvert($subject, $orderItem, $quoteItem);
