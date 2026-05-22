@@ -357,6 +357,7 @@ return [
         'Develo_TypesenseConfig' => 1,
         'Develo_UrlRewriteGraphQlFix' => 0,
         'Graycore_Cors' => 1,
+        'Workwear_Personalization' => 1,
         'Local_OrderParentSku' => 1,
         'Local_SalesAdminFix' => 1,
         'Local_SalesGraphQlFix' => 1,
@@ -381,6 +382,6 @@ return [
         'Smile_ElasticsuiteVirtualCategory' => 1,
         'Develo_SnowdogMenuGraphQlExtension' => 1,
         'Develo_SocialLoginGraphQl' => 1,
-        'Workwear_Personalization' => 1
+        'Local_IndividualPacking' => 1
     ]
 ];
