@@ -30,8 +30,10 @@ class IndividualPackingFee extends AbstractTotal
             return $this;
         }
 
-        // Suppress the parent's internal reset (setTotalAmount($code, 0)) so we
-        // fully control when setTotalAmount is called on the $total object.
+        // Suppress the parent's zero-reset on $total so we fully control
+        // when setTotalAmount is called. AbstractTotal::_setAmount(0) would
+        // otherwise call $total->setTotalAmount($code, 0) before we set the
+        // real value, breaking strict mock expectations and doubling calls.
         $this->_canSetAddressAmount = false;
         parent::collect($quote, $shippingAssignment, $total);
         $this->_canSetAddressAmount = true;
