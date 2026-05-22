@@ -50,6 +50,6 @@ class SetIndividualPackingOnCartItem implements ResolverInterface
         $cartItem->setData('individual_packing_selected', $selected ? 1 : 0);
         $this->quoteItemResource->save($cartItem);
 
-        return ['model' => $cart];
+        return ['cart' => ['model' => $cart]];
     }
 }
