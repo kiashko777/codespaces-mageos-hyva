@@ -1,21 +1,9 @@
 <?xml version="1.0"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-
-    <!-- Append individually_packable to product collection queries via GraphQL -->
-    <type name="Magento\CatalogGraphQl\Model\Resolver\Products\DataProvider\Product\CollectionProcessor\AttributeProcessor">
-        <arguments>
-            <argument name="additionalAttributes" xsi:type="array">
-                <item name="individually_packable" xsi:type="string">individually_packable</item>
-            </argument>
-        </arguments>
-    </type>
-
-    <!-- Append individual packing options to order item on quote→order conversion -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <type name="Magento\Quote\Model\Quote\Item\ToOrderItem">
-        <plugin name="local_individual_packing_to_order_item"
-                type="Local\IndividualPacking\Plugin\SaveIndividualPackingToOrderItem"
-                sortOrder="20"/>
+        <plugin name="local_individual_packing_save" type="Local\IndividualPacking\Plugin\SaveIndividualPackingToOrderItem"/>
     </type>
-
+    <type name="Magento\SalesGraphQl\Model\Formatter\Order\Item">
+        <plugin name="local_individual_packing_graphql" type="Local\IndividualPacking\Plugin\AddAdditionalOptionsToGraphQl"/>
+    </type>
 </config>
