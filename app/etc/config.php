@@ -359,6 +359,7 @@ return [
         'Graycore_Cors' => 1,
         'Workwear_Personalization' => 1,
         'Local_OrderParentSku' => 1,
+        'Local_IndividualPacking' => 1,
         'Local_SalesAdminFix' => 1,
         'Local_SalesGraphQlFix' => 1,
         'MageOS_AutomaticTranslation' => 1,
@@ -382,6 +383,6 @@ return [
         'Smile_ElasticsuiteVirtualCategory' => 1,
         'Develo_SnowdogMenuGraphQlExtension' => 1,
         'Develo_SocialLoginGraphQl' => 1,
-        'Local_IndividualPacking' => 1
+        'Local_Personpack' => 1
     ]
 ];

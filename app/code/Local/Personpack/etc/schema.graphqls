@@ -1,0 +1,66 @@
+extend type Cart {
+    is_personpack: Boolean
+        @doc(description: "Whether this cart is a personpack order")
+        @resolver(class: "\\Local\\Personpack\\GraphQl\\Resolver\\CartPersonpackData")
+    personpack_fee: Float
+        @doc(description: "Total personpack fee for the cart (fee × number of people)")
+        @resolver(class: "\\Local\\Personpack\\GraphQl\\Resolver\\CartPersonpackData")
+    personpack_people_count: Int
+        @doc(description: "Number of named people in the personpack order")
+        @resolver(class: "\\Local\\Personpack\\GraphQl\\Resolver\\CartPersonpackData")
+}
+
+extend interface CartItemInterface {
+    personpack_person_id: String
+        @doc(description: "UUID of the person this item belongs to in a personpack order")
+        @resolver(class: "\\Local\\Personpack\\GraphQl\\Resolver\\CartItemPersonpackData")
+    personpack_person_name: String
+        @doc(description: "Name of the person this item belongs to in a personpack order")
+        @resolver(class: "\\Local\\Personpack\\GraphQl\\Resolver\\CartItemPersonpackData")
+    personpack_sequence: Int
+        @doc(description: "Sequence number (1-based) of this person in the personpack order")
+        @resolver(class: "\\Local\\Personpack\\GraphQl\\Resolver\\CartItemPersonpackData")
+}
+
+type Mutation {
+    setPersonpackMode(
+        input: SetPersonpackModeInput!
+    ): SetPersonpackModeOutput
+        @resolver(class: "\\Local\\Personpack\\GraphQl\\Resolver\\SetPersonpackMode")
+        @doc(description: "Enable or disable personpack mode on a cart")
+
+    setPersonpackItems(
+        input: SetPersonpackItemsInput!
+    ): SetPersonpackItemsOutput
+        @resolver(class: "\\Local\\Personpack\\GraphQl\\Resolver\\SetPersonpackItems")
+        @doc(description: "Set the people and their items for a personpack order")
+}
+
+input SetPersonpackModeInput @doc(description: "Input for setPersonpackMode") {
+    cart_id: String! @doc(description: "Masked cart ID")
+    enabled: Boolean! @doc(description: "True to enable personpack mode")
+}
+
+input SetPersonpackItemsInput @doc(description: "Input for setPersonpackItems") {
+    cart_id: String! @doc(description: "Masked cart ID")
+    people: [PersonInput!]! @doc(description: "List of people with their items")
+}
+
+input PersonInput @doc(description: "A named person and their items") {
+    person_id: String! @doc(description: "Client-generated UUID for this person")
+    person_name: String! @doc(description: "Full name of the person (e.g. John Smith)")
+    items: [PersonItemInput!]! @doc(description: "Items for this person")
+}
+
+input PersonItemInput @doc(description: "A single item for a person in a personpack") {
+    sku: String! @doc(description: "Product SKU")
+    qty: Int! @doc(description: "Quantity")
+}
+
+type SetPersonpackModeOutput @doc(description: "Output for setPersonpackMode") {
+    cart: Cart! @doc(description: "The updated cart")
+}
+
+type SetPersonpackItemsOutput @doc(description: "Output for setPersonpackItems") {
+    cart: Cart! @doc(description: "The updated cart with personpack items")
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+
+    <!-- quote table: personpack header fields -->
+    <table name="quote" resource="checkout" engine="innodb">
+        <column xsi:type="smallint" name="is_personpack" unsigned="true" nullable="false" default="0"
+                comment="Is Personpack Order"/>
+        <column xsi:type="int" name="personpack_people_count" unsigned="true" nullable="false" default="0"
+                comment="Personpack Number of People"/>
+    </table>
+
+    <!-- quote_item table: per-item person fields -->
+    <table name="quote_item" resource="checkout" engine="innodb">
+        <column xsi:type="varchar" name="personpack_person_id" nullable="true" length="36"
+                comment="Personpack Person UUID"/>
+        <column xsi:type="varchar" name="personpack_person_name" nullable="true" length="255"
+                comment="Personpack Person Name"/>
+        <column xsi:type="int" name="personpack_sequence" unsigned="true" nullable="true"
+                comment="Personpack Person Sequence Number"/>
+    </table>
+
+    <!-- sales_order table: personpack header fields -->
+    <table name="sales_order" resource="sales" engine="innodb">
+        <column xsi:type="smallint" name="is_personpack" unsigned="true" nullable="false" default="0"
+                comment="Is Personpack Order"/>
+        <column xsi:type="int" name="personpack_people_count" unsigned="true" nullable="false" default="0"
+                comment="Personpack Number of People"/>
+    </table>
+
+    <!-- sales_order_item table: per-item person fields -->
+    <table name="sales_order_item" resource="sales" engine="innodb">
+        <column xsi:type="varchar" name="personpack_person_id" nullable="true" length="36"
+                comment="Personpack Person UUID"/>
+        <column xsi:type="varchar" name="personpack_person_name" nullable="true" length="255"
+                comment="Personpack Person Name"/>
+        <column xsi:type="int" name="personpack_sequence" unsigned="true" nullable="true"
+                comment="Personpack Person Sequence Number"/>
+    </table>
+
+</schema>
