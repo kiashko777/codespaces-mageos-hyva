@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Local\Personpack\GraphQl\Resolver;
 
+use Local\Personpack\Model\Config;
+use Local\Personpack\Model\PersonpackCalculator;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
@@ -18,7 +20,9 @@ class SetPersonpackItems implements ResolverInterface
         private readonly GetCartForUser            $getCartForUser,
         private readonly CartRepositoryInterface   $cartRepository,
         private readonly ProductRepositoryInterface $productRepository,
-        private readonly QuoteItemResource         $quoteItemResource
+        private readonly QuoteItemResource         $quoteItemResource,
+        private readonly Config                    $config,
+        private readonly PersonpackCalculator      $personpackCalculator
     ) {}
 
     public function resolve(
@@ -28,6 +32,10 @@ class SetPersonpackItems implements ResolverInterface
         array $value = null,
         array $args = null
     ): array {
+        if (!$this->config->isEnabled()) {
+            throw new GraphQlInputException(__('Personpack mode is not available.'));
+        }
+
         $input        = $args['input'] ?? [];
         $maskedCartId = (string) ($input['cart_id'] ?? '');
         $people       = $input['people'] ?? [];
@@ -68,8 +76,19 @@ class SetPersonpackItems implements ResolverInterface
                 if ($sku === '') {
                     throw new GraphQlInputException(__('Each item must have a sku'));
                 }
+                if ($qty < 1) {
+                    throw new GraphQlInputException(__('Item quantity must be at least 1'));
+                }
 
-                $product   = $this->productRepository->get($sku, false, $storeId);
+                // forceReload=true so each person gets a distinct product instance; a shared
+                // cached instance would let its custom options bleed across people and merge.
+                $product = $this->productRepository->get($sku, false, $storeId, true);
+
+                // Tag the product with the person so identical SKUs for different people
+                // do NOT merge into a single quote item (Quote::getItemByProduct compares
+                // custom options when deciding whether to merge).
+                $product->addCustomOption('personpack_person_id', $personId);
+
                 $quoteItem = $cart->addProduct($product, $qty);
 
                 if (is_string($quoteItem)) {
@@ -85,7 +104,7 @@ class SetPersonpackItems implements ResolverInterface
         }
 
         $cart->setData('is_personpack', 1);
-        $cart->setData('personpack_people_count', count($people));
+        $cart->setData('personpack_people_count', $this->personpackCalculator->countPeople($cart));
         $this->cartRepository->save($cart);
 
         // Persist personpack fields on items (not auto-saved by CartRepository)

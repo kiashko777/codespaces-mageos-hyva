@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Local\Personpack\GraphQl\Resolver;
 
+use Local\Personpack\Model\Config;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
@@ -14,7 +15,8 @@ class SetPersonpackMode implements ResolverInterface
 {
     public function __construct(
         private readonly GetCartForUser          $getCartForUser,
-        private readonly CartRepositoryInterface $cartRepository
+        private readonly CartRepositoryInterface $cartRepository,
+        private readonly Config                  $config
     ) {}
 
     public function resolve(
@@ -24,6 +26,10 @@ class SetPersonpackMode implements ResolverInterface
         array $value = null,
         array $args = null
     ): array {
+        if (!$this->config->isEnabled()) {
+            throw new GraphQlInputException(__('Personpack mode is not available.'));
+        }
+
         $input        = $args['input'] ?? [];
         $maskedCartId = (string) ($input['cart_id'] ?? '');
         $enabled      = (bool) ($input['enabled'] ?? false);

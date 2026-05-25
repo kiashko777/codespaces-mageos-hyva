@@ -23,6 +23,16 @@
                     <label>Order Total Label</label>
                     <comment>Label shown in order totals and admin order view.</comment>
                 </field>
+                <field id="person_label" translate="label comment" type="text" sortOrder="40"
+                       showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Order Item "Person" Label</label>
+                    <comment>Label for the person name shown on order item options. Default: Person</comment>
+                </field>
+                <field id="pack_label" translate="label comment" type="text" sortOrder="50"
+                       showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Order Item "Pack" Label</label>
+                    <comment>Label for the pack sequence shown on order item options. Default: Pack</comment>
+                </field>
             </group>
         </section>
     </system>

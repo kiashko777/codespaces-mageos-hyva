@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Local\Personpack\Model\Quote\Total;
 
 use Local\Personpack\Model\Config;
+use Local\Personpack\Model\PersonpackCalculator;
 use Magento\Quote\Api\Data\ShippingAssignmentInterface;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Address\Total;
@@ -14,7 +15,8 @@ class PersonpackFee extends AbstractTotal
     protected $_code = 'personpack_fee';
 
     public function __construct(
-        private readonly Config $config
+        private readonly Config $config,
+        private readonly PersonpackCalculator $personpackCalculator
     ) {}
 
     public function collect(
@@ -22,25 +24,18 @@ class PersonpackFee extends AbstractTotal
         ShippingAssignmentInterface $shippingAssignment,
         Total $total
     ): static {
+        // Reset any previously-collected amount so a disabled/cleared personpack cart drops the fee.
+        parent::collect($quote, $shippingAssignment, $total);
+
         if ($shippingAssignment->getShipping()->getAddress()->getAddressType() !== Quote\Address::TYPE_SHIPPING) {
             return $this;
         }
 
-        if (!$this->config->isEnabled()) {
+        if (!$this->config->isEnabled() || !(int) $quote->getData('is_personpack')) {
             return $this;
         }
 
-        if (!(int) $quote->getData('is_personpack')) {
-            return $this;
-        }
-
-        // Suppress AbstractTotal's zero-reset so we fully control setTotalAmount
-        $this->_canSetAddressAmount = false;
-        parent::collect($quote, $shippingAssignment, $total);
-        $this->_canSetAddressAmount = true;
-
-        $peopleCount = (int) $quote->getData('personpack_people_count');
-        $fee         = round($this->config->getFeePerPerson() * $peopleCount, 2);
+        $fee = $this->personpackCalculator->calculateFee($quote);
 
         if ($fee > 0.0) {
             $total->setTotalAmount($this->getCode(), $fee);

@@ -2,14 +2,8 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
 
-    <!-- Register personpack fee as a sales total -->
-    <type name="Magento\Quote\Model\Quote\TotalsCollector">
-        <arguments>
-            <argument name="totalCollectors" xsi:type="array">
-                <item name="personpack_fee" xsi:type="object">Local\Personpack\Model\Quote\Total\PersonpackFee</item>
-            </argument>
-        </arguments>
-    </type>
+    <!-- personpack fee total collector is registered via etc/sales.xml so it
+         runs in the correct order (before grand_total) -->
 
     <!-- Copy personpack data from quote item to order item on conversion -->
     <type name="Magento\Quote\Model\Quote\Item\ToOrderItem">

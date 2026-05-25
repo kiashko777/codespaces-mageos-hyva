@@ -7,6 +7,8 @@
                 <enabled>1</enabled>
                 <fee_per_person>2.50</fee_per_person>
                 <label>Personpack Fee</label>
+                <person_label>Person</person_label>
+                <pack_label>Pack</pack_label>
             </personpack>
         </workwear>
     </default>

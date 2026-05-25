@@ -3,12 +3,17 @@ declare(strict_types=1);
 
 namespace Local\Personpack\Plugin;
 
+use Local\Personpack\Model\Config;
 use Magento\Quote\Model\Quote\Item as QuoteItem;
 use Magento\Quote\Model\Quote\Item\ToOrderItem;
 use Magento\Sales\Model\Order\Item as OrderItem;
 
 class SavePersonpackToOrderItem
 {
+    public function __construct(
+        private readonly Config $config
+    ) {}
+
     public function afterConvert(
         ToOrderItem $subject,
         OrderItem $orderItem,
@@ -27,11 +32,11 @@ class SavePersonpackToOrderItem
             $options['additional_options'] ?? [],
             [
                 [
-                    'label' => 'Person',
+                    'label' => $this->config->getPersonLabel(),
                     'value' => $personName,
                 ],
                 [
-                    'label' => 'Pack',
+                    'label' => $this->config->getPackLabel(),
                     'value' => '#' . $sequence,
                 ],
             ]

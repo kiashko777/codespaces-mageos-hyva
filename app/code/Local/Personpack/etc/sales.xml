@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Sales:etc/sales.xsd">
+    <section name="quote">
+        <group name="totals">
+            <!-- After individual_packing_fee (160), well before grand_total (550) -->
+            <item name="personpack_fee"
+                  instance="Local\Personpack\Model\Quote\Total\PersonpackFee"
+                  sort_order="170"/>
+        </group>
+    </section>
+</config>
