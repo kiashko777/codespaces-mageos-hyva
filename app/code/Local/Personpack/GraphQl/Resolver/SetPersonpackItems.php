@@ -51,11 +51,9 @@ class SetPersonpackItems implements ResolverInterface
         $storeId       = (int) $context->getExtensionAttributes()->getStore()->getId();
         $cart          = $this->getCartForUser->execute($maskedCartId, $currentUserId, $storeId);
 
-        // Remove existing personpack items only (preserve non-personpack items)
+        // Remove ALL existing items
         foreach ($cart->getAllItems() as $item) {
-            if ($item->getData('personpack_person_id')) {
-                $cart->removeItem($item->getItemId());
-            }
+            $cart->removeItem($item->getItemId());
         }
 
         // Add items per person
@@ -76,17 +74,8 @@ class SetPersonpackItems implements ResolverInterface
                 if ($sku === '') {
                     throw new GraphQlInputException(__('Each item must have a sku'));
                 }
-                if ($qty < 1) {
-                    throw new GraphQlInputException(__('Item quantity must be at least 1'));
-                }
 
-                // forceReload=true so each person gets a distinct product instance; a shared
-                // cached instance would let its custom options bleed across people and merge.
                 $product = $this->productRepository->get($sku, false, $storeId, true);
-
-                // Tag the product with the person so identical SKUs for different people
-                // do NOT merge into a single quote item (Quote::getItemByProduct compares
-                // custom options when deciding whether to merge).
                 $product->addCustomOption('personpack_person_id', $personId);
 
                 $quoteItem = $cart->addProduct($product, $qty);
@@ -95,9 +84,18 @@ class SetPersonpackItems implements ResolverInterface
                     throw new GraphQlInputException(__($quoteItem));
                 }
 
+                // Set person data on the main item
                 $quoteItem->setData('personpack_person_id', $personId);
                 $quoteItem->setData('personpack_person_name', $personName);
                 $quoteItem->setData('personpack_sequence', $sequence);
+
+                // Also set on parent item if exists (configurable product creates parent+child)
+                $parentItem = $quoteItem->getParentItem();
+                if ($parentItem) {
+                    $parentItem->setData('personpack_person_id', $personId);
+                    $parentItem->setData('personpack_person_name', $personName);
+                    $parentItem->setData('personpack_sequence', $sequence);
+                }
             }
 
             $sequence++;
@@ -107,7 +105,7 @@ class SetPersonpackItems implements ResolverInterface
         $cart->setData('personpack_people_count', $this->personpackCalculator->countPeople($cart));
         $this->cartRepository->save($cart);
 
-        // Persist personpack fields on items (not auto-saved by CartRepository)
+        // Persist personpack fields on all items
         foreach ($cart->getAllItems() as $item) {
             if ($item->getData('personpack_person_id')) {
                 $this->quoteItemResource->save($item);
